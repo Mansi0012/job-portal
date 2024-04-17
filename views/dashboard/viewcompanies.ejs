@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,tr,td{
+        color: aqua;
+    }
+    table th{
+       color: black; 
+    }
+</style>
+<body>
+    <%- include('./header.ejs') %> 
+    <%- include('./left.ejs') %> 
+   <div class="container-fluid">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-md-9">
+            <h2 class="text-center">VIEW companies</h2>
+            <% if(compdata.length>0){ %>
+            <table class="table table-bordered table-sm" id="myTable" width="100%">
+                <thead>
+                <tr> 
+                    <th>FullName</th>
+                    <th>Email</th>
+                    <th>number</th>
+                    <th>Location</th>
+                    <th>image</th>
+                    <th>edit</th>
+            
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<compdata.length; i++){%>
+                        <tr>
+                            <td><%= compdata[i].companyName %></td>
+                            <td><%= compdata[i].email %></td>
+                            <td><%= compdata[i].Number %></td>
+                            <td><%= compdata[i].Location %></td>
+                            <td><%=compdata[i].image%></td>
+                            <!-- <td><img src="/<%= compdata[i].image %>" height="100px" width="100px"></td> -->
+                            <td><a href="/delete_2/<%= compdata[i]._id %>"><button class="btn-primary">delete</button></a></td>
+                             <td><a href="/edit2/<%= compdata[i]._id %>"><button class="btn-primary">edit</button></a></td> 
+                            
+ 
+                        </tr>
+
+                        <%} %>
+                    
+                </tbody>
+                </table>
+                <%} else
+                {%>
+                    no record found
+               <% } %>
+                </div>
+    </div>
+   </div>
+</body>
+</html>

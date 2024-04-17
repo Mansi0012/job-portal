@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,tr,td{
+        color: aqua;
+    }
+    table th{
+       color: black; 
+    }
+</style>
+<body>
+    <%- include('./header.ejs') %> 
+    <%- include('./left.ejs') %> 
+   <div class="container-fluid">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-md-9">
+            <h2 class="text-center">VIEW REGISTER PEOPLE</h2>
+            <% if(regdata.length>0){ %>
+            <table class="table table-bordered table-sm" id="myTable" width="100%">
+                <thead>
+                <tr> 
+                    <th>FullName</th>
+                    <th>Email</th>
+                    <!-- <th>Password</th>
+                    <th>Confirmpassword</th> -->
+                    <th>edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<regdata.length; i++){%>
+                        <tr>
+                            <td><%= regdata[i].fullName %></td>
+                            <td><%= regdata[i].email %></td>
+                            <!-- <td><%= regdata[i].password %></td>
+                            <td><%= regdata[i]. confirmPassword %></td> -->
+                            <td><a href="/delete_1/<%= regdata[i]._id %>"><button class="btn-primary">delete</button></a></td>
+                             <td><a href="/edit/<%= regdata[i]._id %>"><button class="btn-primary">edit</button></a></td>
+                            
+                             
+
+                        </tr>
+                        <%} %>
+                    
+                </tbody>
+                </table>
+                <%} else
+                {%>
+                    no record found
+               <% } %>
+                </div>
+    </div>
+   </div>
+</body>
+</html>

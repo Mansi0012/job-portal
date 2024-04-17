@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <%- include('./common/header.ejs') %>
+    <!-- <div class="container-fluide">
+ <img src="images/job.jpg" height="700px" width="100%"> 
+ 
+ </div> -->
+    <!-- =========main section===============-->
+    <section class="main py-3">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-7">
+            <h1>Find the most Exiting Startup jobs</h1>
+            <input type="text" placeholder="job title or keyword">
+            <button class="btn2 mt-5">Find job</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- main section ends -->
+    <!-- job section -->
+    <section class="ceta">
+      <% if(compdata.length>0){ %>
+        <div class="container-fluid py-5 text-center">
+          <h1 class="text-center fw-bold">Companies</h1>
+          <div class="row py-3">
+            <% for(var i=0; i<compdata.length; i++){%>
+            <div class="col-md-3 py-3">
+              <div class="card ">
+                <div class="card-body">
+                  <img src="<%= compdata[i].image %>" height="300px" width="300px">
+                  <h6>
+                    <%= compdata[i].companyName %>
+                  </h6>
+                  <h6>
+                    <%= compdata[i].email %>
+                  </h6>
+                  <h6>
+                    <%= compdata[i].Number %>
+                  </h6>
+                  <h6>
+                    <%= compdata[i].Location %>
+                  </h6>
+              <button class="btn-primary"> <a href="/morecompany/<%= compdata[i]._id %> " style=" text-decoration:none;"><h5 class="coral">read more......</h5></a></button>
+                </div>
+              </div>
+              
+            </div>
+            <% } %>
+
+          </div>
+        </div>
+
+          <%} else {%>
+            no record found
+            <% } %>
+               
+    </section>
+    <!-- ===================resume============== -->
+    <div class="resume py-5 text-center text-white">
+      <div class="container py-5">
+        <div class="row py-5">
+          <div class="col-lg-10">
+            <p>Featured Tours Packages</p>
+            <h1>Make a Difference with your Online Resume!</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
+<%- include('./common/footer.ejs') %>
